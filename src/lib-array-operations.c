@@ -18,7 +18,7 @@ void init_Array_With_Positiv_And_Negativ (char *array, int arraySize) {
 void init_Array_With_Positives (char *array, int arraySize) {
     srand(time(0));
     for (int i = 0; i < arraySize; ++i) {
-        array[i] = rand() % 128;
+        array[i] = rand() % 10;//128;
     }
 }
 

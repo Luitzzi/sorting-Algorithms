@@ -1,3 +1,4 @@
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -9,8 +10,8 @@
 #include "lib-array-operations.h"
 
 // Analysing functions
-bool test_Sorting_Algorithm (void (*sorting_Algorithm)(char *, int));
 void analyse_Runtime_Of_Sorting_Algorithm ();
+bool test_Sorting_Algorithm (void (*sorting_Algorithm)(char *, int), int arraySize);
 
 // Helper runtime analysis functions
 double meassure_Time (void (*sorting_Algorithm) (char *, int), int arraySize);
@@ -28,17 +29,14 @@ void flush_Input_Buffer ();
 
 enum orderArraysOfTestArraySizes {HUGE_NUMBERS, BIG_NUMBERS, SMALL_NUMBERS};
 
-int main(void) {
-    //test_Sorting_Algorithm(wrapped_Countsort);
-    char array[] = {5,7,1,2,2,6,3};
-    wrapped_Countsort(array, 7);
 
-    //analyse_Runtime_Of_Sorting_Algorithm();
+int main(void) {
+    analyse_Runtime_Of_Sorting_Algorithm();
+
     return 0;
 }
 
-bool test_Sorting_Algorithm (void (*sorting_Algorithm)(char *, int)) {
-    int arraySize = 1000;
+bool test_Sorting_Algorithm (void (*sorting_Algorithm)(char *, int), int arraySize) {
     char array[arraySize];
     bool isSorted = false;
     for (int testNumber = 0; testNumber < 5; testNumber++)
@@ -48,8 +46,9 @@ bool test_Sorting_Algorithm (void (*sorting_Algorithm)(char *, int)) {
         isSorted = check_If_Sorted(array, arraySize);
         if (!isSorted)
         {
-            printf("Test %d failed!\n", testNumber);
-            print_Array(array, arraySize);
+            printf("Test %d failed!\n", testNumber + 1);
+            if (arraySize <= 100)
+                print_Array(array, arraySize);
             return false;
         }
     }
@@ -98,7 +97,7 @@ sorting_Algorithm get_Sorting_Algorithm () {
     int maxInputLength = 3;
     char tmpInput[maxInputLength];
 
-    printf("\n\nPlease choose the sorting algorithm:\n(1) Bubble ; (2) Insertion ; (3) Selection ; (4) Quicksort ; (5) Dual-Pivot Quicksort ; (6) Mergesort ; (7) Heapsort\n");
+    printf("\n\nPlease choose the sorting algorithm:\n(1) Bubble ; (2) Insertion ; (3) Selection ; (4) Quicksort ; (5) Dual-Pivot Quicksort ; (6) Mergesort ; (7) Heapsort ; (8) Countsort ; (9) Mapsort ;\n");
     char choice = 0;
     get_Input(tmpInput, maxInputLength);
     choice = atoi(&tmpInput[0]);
@@ -118,6 +117,10 @@ sorting_Algorithm get_Sorting_Algorithm () {
             return wrapped_Mergesort;
         case 7:
             return wrapped_Heapsort;
+        case 8:
+            return wrapped_Countsort;
+        case 9:
+            return wrapped_Mapsort;
     }
 }
 

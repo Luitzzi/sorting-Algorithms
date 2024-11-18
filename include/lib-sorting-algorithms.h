@@ -33,10 +33,12 @@ void wrapped_Heapsort (char *array, int arraySize);
 void heapsort (char *array, int first, int last);
     void build_Heap (char *array, int first, int last);
     void heapify (char *array, int first, int last, int root);
-void wrapped_Countsort (char *array, int arraySize);
+void wrapped_Countsort_Slow (char *array, int arraySize);
 void countsort_Slow (char *inputArray, int arraySize, int maxValue);
+void wrapped_Countsort (char *array, int arraySize);
 void countsort (char *inputArray, int arraySize, int maxValue);
-
+void wrapped_Mapsort (char* array, int arraySize);
+void mapsort(char *inputArray, int arraySize, double increaseSizeRatio);
 
 
 #endif
