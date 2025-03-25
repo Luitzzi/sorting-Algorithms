@@ -8,7 +8,7 @@
 enum orderArraysOfTestArraySizes { HUGE_NUMBERS, BIG_NUMBERS, SMALL_NUMBERS };
 
 void analyse_Runtime_Of_Sorting_Algorithm() {
-    printf("\nWelcome to the sorting-algorithm-time-meassurer :D\n");
+    printf("\nWelcome to the sorting-algorithm-time-measurer :D\n");
     void (*sorting_Algorithm)(char *, int);
     int *sizesOfTestArrays;
     // A negative number indicates the end of the array
@@ -46,31 +46,33 @@ sorting_Algorithm get_Sorting_Algorithm() {
     char tmpInput[maxInputLength];
 
     printf(
-        "\n\nPlease choose the sorting algorithm:\n(1) Bubble ; (2) Insertion ; (3) Selection ; (4) Quicksort ; (5) Dual-Pivot Quicksort ; (6) Mergesort ; (7) Heapsort ; (8) Countsort-Slow ; (9) Countsort ; (10) Mapsort ;\n");
+        "\nPlease choose the sorting algorithm:\n(0) Bubble ; (1) Insertion ; (2) Selection ;"
+        " (3) Quicksort ; (4) Dual-Pivot Quicksort ; (5) Mergesort ; (6) Heapsort ;"
+        " (7) Countsort-Slow ; (8) Countsort ; (9) Mapsort ;\n");
     char choice = 0;
     get_Input(tmpInput, maxInputLength);
     choice = atoi(&tmpInput[0]);
 
     switch (choice) {
-        case 1:
+        case 0:
             return bubble_Sort_MinToFront;
-        case 2:
+        case 1:
             return insertion_Sort_LeftToRight;
-        case 3:
+        case 2:
             return selection_Sort_Minimum;
-        case 4:
+        case 3:
             return wrapped_Quicksort;
-        case 5:
+        case 4:
             return wrapped_Quicksort_DualPivot;
-        case 6:
+        case 5:
             return wrapped_Mergesort;
-        case 7:
+        case 6:
             return wrapped_Heapsort_Max;
-        case 8:
+        case 7:
             return wrapped_Countsort_Slow;
-        case 9:
+        case 8:
             return wrapped_Countsort;
-        case 10:
+        case 9:
             return wrapped_Mapsort;
     }
 }
