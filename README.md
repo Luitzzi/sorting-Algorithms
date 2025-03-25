@@ -1,4 +1,6 @@
-
+![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
+![CMake](https://img.shields.io/badge/CMake-%23008FBA.svg?style=for-the-badge&logo=cmake&logoColor=white)
+<br/>
 Welcome to the Sorting Algorithm Analyser - Get an overview over the basic sorting algorithms and their performance
 
 ---
@@ -42,3 +44,11 @@ Welcome to the Sorting Algorithm Analyser - Get an overview over the basic sorti
   * Interchangeable by using function pointers injected at runtime based on the user-input.
 <br/><br/>
 * **How the algorithms work of course**
+<br/><br/>
+* **Limited stack-size on linux**
+  * Due to the stack-size limit of 8MB some algorithms resulted in a seg.fault 
+    when operating with arrays with multiple numbers.
+    For example Mergesort ex-situ merges the divided parts into an extra array.
+
+
+![Static Badge](https://img.shields.io/badge/Author-Luis_Gerlinger-blue)

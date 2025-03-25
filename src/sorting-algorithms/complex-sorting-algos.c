@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
@@ -139,7 +140,11 @@ void merge(char *array, int first, int last, int middle) {
     int arraySize = last - first + 1;
     int a1f = first, a1l = middle - 1;
     int a2f = middle, a2l = last;
-    char newArray[arraySize];
+    char *newArray = (char *)malloc(arraySize * sizeof(char));
+    if (!newArray) {
+        printf("Memory allocation failed!\n");
+        exit(1);
+    }
 
     for (int i = 0; i < arraySize; ++i) {
         if (a1f <= a1l)
@@ -153,6 +158,8 @@ void merge(char *array, int first, int last, int middle) {
     for (int j = 0; j < arraySize; ++j) {
         array[first + j] = newArray[j];
     }
+
+    free(newArray);
 }
 
 void wrapped_Mergesort_InSitu(char *array, int arraySize) {
