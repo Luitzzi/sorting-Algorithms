@@ -64,7 +64,7 @@ void countsort(char *inputArray, int arraySize, int maxValue) {
         bucketArray[i] += bucketArray[i - 1];
     }
     // Insert the numbers into the sorted array
-    char sortedArray[arraySize];
+    char *sortedArray = (char *)malloc(arraySize * sizeof(char));
     for (int i = arraySize - 1; i >= 0; --i) {
         sortedArray[(bucketArray[inputArray[i]] - 1)] = inputArray[i];
         bucketArray[inputArray[i]]--;
@@ -72,6 +72,8 @@ void countsort(char *inputArray, int arraySize, int maxValue) {
     for (int i = 0; i < arraySize; ++i) {
         inputArray[i] = sortedArray[i];
     }
+
+    free(sortedArray);
 }
 
 void wrapped_Mapsort(char *array, int arraySize) {
@@ -81,7 +83,7 @@ void wrapped_Mapsort(char *array, int arraySize) {
 
 void mapsort(char *inputArray, int arraySize, double increaseSizeRatio) {
     int increasedArraySize = arraySize * increaseSizeRatio;
-    char tmpArray[increasedArraySize];
+    char *tmpArray =(char *)malloc(increasedArraySize * sizeof(char));
     int max = INT_MIN, min = INT_MAX;
     // Initialise new Array with -1 -> Value indicating the array position is empty
     for (int i = 0; i < increasedArraySize; ++i) {
@@ -133,4 +135,6 @@ void mapsort(char *inputArray, int arraySize, double increaseSizeRatio) {
             inputArrayIndex++;
         }
     }
+
+    free(tmpArray);
 }
